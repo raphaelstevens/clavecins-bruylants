@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clavecins de Collection Betty Bruylants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Crimson+Text:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --color-background: #F5F2E9;
+            --color-text: #2C1810;
+            --color-gold: #B8860B;
+            --color-burgundy: #67232F;
+            --color-sage: #B8C4B8;
+            --color-gray: #8B8178;
+            --color-beige: #E8E2D5;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--color-gold);
+        }
+
+        .header {
+            background-color: var(--color-beige);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--color-gold);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .harpsichord-card {
+            background-color: white;
+            border-radius: 12px;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-container {
+            margin: 2rem 0;
+        }
+
+        .photo-main {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .photo-detail-container {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 6px;
+            background-color: var(--color-beige);
+        }
+
+        .photo-detail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-detail:hover {
+            transform: scale(1.05);
+        }
+
+        .specs {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-sage);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .specs-section {
+            margin-bottom: 1rem;
+        }
+
+        .specs-section h4 {
+            color: var(--color-burgundy);
+            margin-bottom: 0.3rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .expertise-section {
+            background-color: var(--color-beige);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-gold);
+        }
+
+        .maker-info {
+            background-color: var(--color-sage);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .specs ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specs li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .specs li:before {
+            content: "•";
+            color: var(--color-gold);
+            position: absolute;
+            left: 0;
+        }
+
+        .price-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--color-beige);
+            border-radius: 8px;
+        }
+
+        .price {
+            color: var(--color-burgundy);
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .contact {
+            background-color: var(--color-beige);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .harpsichord-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Collection de Clavecins Betty Bruylants</h1>
+    </header>
+
+    <div class="container">
+        <!-- Clavecin Allemand -->
+        <section class="harpsichord-card">
+            <h2>Clavecin Allemand par Alain Anselm</h2>
+            
+            <div class="gallery-container">
+                <!-- Photo principale -->
+                <a href="images/anselm/main.jpg" data-lightbox="anselm" data-title="Vue générale du clavecin Anselm">
+                    <img class="photo-main" src="images/anselm/main.jpg" alt="Vue générale du clavecin Anselm">
+                </a>
+
+                <!-- Grille de photos détaillées -->
+                <div class="photo-grid">
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail1.jpg" data-lightbox="anselm" data-title="Décoration par Thierry Bosquet">
+                            <img class="photo-detail" src="images/anselm/detail1.jpg" alt="Décoration Bosquet">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail2.jpg" data-lightbox="anselm" data-title="Vue des deux claviers">
+                            <img class="photo-detail" src="images/anselm/detail2.jpg" alt="Claviers">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail3.jpg" data-lightbox="anselm" data-title="Table d'harmonie">
+                            <img class="photo-detail" src="images/anselm/detail3.jpg" alt="Table d'harmonie">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail4.jpg" data-lightbox="anselm" data-title="Vue de profil">
+                            <img class="photo-detail" src="images/anselm/detail4.jpg" alt="Vue de profil">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail5.jpg" data-lightbox="anselm" data-title="Détail du piétement">
+                            <img class="photo-detail" src="images/anselm/detail5.jpg" alt="Piétement">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="maker-info">
+                    <p>Alain Anselm est un facteur de clavecins belge reconnu pour son excellence dans la tradition allemande. Son travail est caractérisé par une attention méticuleuse aux détails historiques et une qualité de fabrication exceptionnelle.</p>
+                    <p>La décoration de cet instrument a été réalisée par Thierry Bosquet, artiste belge de renom ayant notamment travaillé pour le Théâtre Royal de la Monnaie. Ses décorations de clavecins sont reconnues pour leur finesse et leur fidélité aux styles historiques.</p>
+                </div>
+
+                <div class="expertise-section">
+                    <h4>Expertise</h4>
+                    <p>Cet instrument a été expertisé par Jean-Luc Wolfs, facteur de clavecins réputé à Lathuy (<a href="https://clavecin-wolfsdachy.be/" target="_blank">Clavecin Wolfsdachy</a>).</p>
+                </div>
+
+                <div class="specs">
+                <div class="specs-grid">
+                    <div class="specs-section">
+                        <h4>Informations Générales</h4>
+                        <ul>
+                            <li>Facteur : Alain Anselm</li>
+                            <li>Année de fabrication : [À compléter]</li>
+                            <li>Décoration : Thierry Bosquet</li>
+                            <li>Style : Allemand</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>Caractéristiques Techniques</h4>
+                        <ul>
+                            <li>Nombre de claviers : 2</li>
+                            <li>Étendue : [À compléter]</li>
+                            <li>Disposition des jeux : [À compléter]</li>
+                            <li>Tempérament : [À compléter]</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>Dimensions</h4>
+                        <ul>
+                            <li>Longueur : [À compléter]</li>
+                            <li>Largeur : [À compléter]</li>
+                            <li>Hauteur totale : [À compléter]</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>État et Restauration</h4>
+                        <ul>
+                            <li>État général : [À compléter]</li>
+                            <li>Dernière restauration : [À compléter]</li>
+                            <li>Accord et harmonisation : [À compléter]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <p class="price">Valeur : à partir de 50.000€</p>
+            </div>
+        </section>
+
+        <!-- Clavecin Flamand -->
+        <section class="harpsichord-card">
+            <h2>Clavecin Flamand par Knud Kaufmann</h2>
+            
+            <div class="gallery-container">
+                <!-- Photo principale -->
+                <div class="main-photo-container">
+                    <a href="images/kaufmann/main.jpg" data-lightbox="kaufmann" data-title="Vue générale du clavecin Kaufmann">
+                        <img class="photo-main" src="images/kaufmann/main.jpg" alt="Vue générale du clavecin Kaufmann">
+                    </a>
+                </div>
+
+                <!-- Grille de photos détaillées -->
+                <div class="photo-grid">
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail1.jpg" data-lightbox="kaufmann" data-title="Vue des deux claviers">
+                            <img class="photo-detail" src="images/kaufmann/detail1.jpg" alt="Claviers">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail2.jpg" data-lightbox="kaufmann" data-title="Table d'harmonie">
+                            <img class="photo-detail" src="images/kaufmann/detail2.jpg" alt="Table d'harmonie">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail3.jpg" data-lightbox="kaufmann" data-title="Détail de la rosace">
+                            <img class="photo-detail" src="images/kaufmann/detail3.jpg" alt="Rosace">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail4.jpg" data-lightbox="kaufmann" data-title="Vue de profil">
+                            <img class="photo-detail" src="images/kaufmann/detail4.jpg" alt="Vue de profil">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail5.jpg" data-lightbox="kaufmann" data-title="Signature du facteur">
+                            <img class="photo-detail" src="images/kaufmann/detail5.jpg" alt="Signature">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="maker-info">
+                    <p>Knud Kaufmann est un facteur de clavecins danois de renommée internationale. Formé auprès des plus grands maîtres de la tradition flamande, il est particulièrement reconnu pour l'excellence de ses instruments inspirés des grands maîtres flamands. Ses clavecins sont appréciés pour leur sonorité exceptionnelle et leur fidélité aux techniques historiques.</p>
+                </div>
+
+                <div class="expertise-section">
+                    <h4>Expertise</h4>
+                    <p>Cet instrument a été expertisé par Jean-Luc Wolfs, facteur de clavecins réputé à Lathuy (<a href="https://clavecin-wolfsdachy.be/" target="_blank">Clavecin Wolfsdachy</a>).</p>
+                </div>
+
+                <div class="specs">
+                <div class="specs-grid">
+                    <div class="specs-section">
+                        <h4>Informations Générales</h4>
+                        <ul>
+                            <li>Facteur : Knud Kaufmann</li>
+                            <li>Année de fabrication : 1974</li>
+                            <li>Style : Flamand</li>
+                            <li>Modèle d'après : [À compléter]</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>Caractéristiques Techniques</h4>
+                        <ul>
+                            <li>Nombre de claviers : 2</li>
+                            <li>Étendue : [À compléter]</li>
+                            <li>Disposition des jeux : [À compléter]</li>
+                            <li>Tempérament : [À compléter]</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>Dimensions</h4>
+                        <ul>
+                            <li>Longueur : [À compléter]</li>
+                            <li>Largeur : [À compléter]</li>
+                            <li>Hauteur totale : [À compléter]</li>
+                        </ul>
+                    </div>
+
+                    <div class="specs-section">
+                        <h4>État et Restauration</h4>
+                        <ul>
+                            <li>État général : [À compléter]</li>
+                            <li>Dernière restauration : [À compléter]</li>
+                            <li>Accord et harmonisation : [À compléter]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <p class="price">Valeur : 20.000€</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Pour plus d'informations ou pour organiser une visite :</p>
+            <p>Téléphone : [À compléter]</p>
+            <p>Email :
