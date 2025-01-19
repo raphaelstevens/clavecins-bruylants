@@ -3,251 +3,977 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clavecins de Collection Betty Bruylants</title>
+    <title>Collection Prestigieuse de Clavecins Betty Bruylants</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Crimson+Text:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <style>
-        :root {
-            --color-background: #F5F2E9;
-            --color-text: #2C1810;
-            --color-gold: #B8860B;
-            --color-burgundy: #67232F;
-            --color-sage: #B8C4B8;
-            --color-gray: #8B8178;
-            --color-beige: #E8E2D5;
-        }
 
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text);
-            font-family: 'Crimson Text', serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+/* Variables globales et typographie */
+:root {
+    /* Palette de couleurs */
+    --color-wood-dark: #4A3B32;    
+    --color-wood: #8B6B4A;         
+    --color-gold: #C4A484;         
+    --color-ivory: #F5F2E9;        
+    --color-parchment: #E8E2D5;    
+    --color-burgundy: #722F37;     
+    --color-text: #2C1810;
+    --color-white: #FFFFFF;
+    
+    /* Typographie */
+    --font-serif: 'Crimson Text', Georgia, serif;
+    --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-sans: 'Lato', sans-serif;
+    
+    /* Espacements uniformisés */
+    --spacing-xs: 0.5rem;    /* 8px */
+    --spacing-s: 1rem;       /* 16px */
+    --spacing-m: 1.5rem;     /* 24px */
+    --spacing-l: 2rem;       /* 32px */
+    --spacing-xl: 3rem;      /* 48px */
+    --spacing-xxl: 4rem;     /* 64px */
+    
+    /* Bordures et coins */
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --radius-l: 12px;
+    
+    /* Ombres */
+    --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.12);
+    
+    /* Largeurs */
+    --width-content: min(1200px, 90vw);
+    --width-text: min(800px, 85vw);
 
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--color-gold);
-        }
+    /* Transitions */
+    --transition-speed: 0.3s;
+}
 
-        .header {
-            background-color: var(--color-beige);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-bottom: 3px solid var(--color-gold);
-        }
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            padding: 0;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+body {
+    background-color: var(--color-ivory);
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+}
 
-        .harpsichord-card {
-            background-color: white;
-            border-radius: 12px;
-            margin: 3rem 0;
-            padding: 2.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-        .gallery-container {
-            margin: 2rem 0;
-        }
+a {
+    color: var(--color-burgundy);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
 
-        .photo-main {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
+a:hover {
+    color: var(--color-wood);
+}
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+/* Structure de base */
+.container {
+    width: 100%;
+    max-width: var(--width-content);
+    margin: 0 auto;
+    padding: var(--spacing-l);
+}
 
-        .photo-detail-container {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            border-radius: 6px;
-            background-color: var(--color-beige);
-        }
+/* Typographie générale */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-wood);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-m);
+}
 
-        .photo-detail {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
 
-        .photo-detail:hover {
-            transform: scale(1.05);
-        }
+p {
+    margin-bottom: var(--spacing-m);
+}
 
-        .specs {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--color-sage);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
+/* ===== HEADER STYLES ===== */
 
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+/* Style de base du header */
+.header {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        var(--color-parchment) 0%,
+        var(--color-ivory) 100%
+    );
+    padding: var(--spacing-xxl) var(--spacing-l);
+    margin-bottom: var(--spacing-xxl);
+    width: 100%;
+}
 
-        .specs-section {
-            margin-bottom: 1rem;
-        }
+/* Bordure décorative du header */
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-gold),
+        transparent
+    );
+}
 
-        .specs-section h4 {
-            color: var(--color-burgundy);
-            margin-bottom: 0.3rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
+/* Style du titre principal */
+.header h1 {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-m);
+    color: var(--color-wood-dark);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0 var(--spacing-l);
+    max-width: 1200px;
+}
 
-        .expertise-section {
-            background-color: var(--color-beige);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--color-gold);
-        }
+/* Ligne décorative sous le titre */
+.header h1::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: var(--spacing-m) auto 0;
+}
 
-        .maker-info {
-            background-color: var(--color-sage);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-style: italic;
-        }
+/* Style du sous-titre */
+.header-subtitle {
+    font-size: 1.4rem;
+    color: var(--color-burgundy);
+    font-style: italic;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-l);
+    opacity: 0.9;
+}
 
-        .specs ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+/* Media queries pour le header */
+@media (max-width: 1024px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
 
-        .specs li {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
+    .header-subtitle {
+        font-size: 1.1rem;
+    }
+}
 
-        .specs li:before {
-            content: "•";
-            color: var(--color-gold);
-            position: absolute;
-            left: 0;
-        }
+@media (max-width: 768px) {
+    .header {
+        min-height: 50vh;
+        padding: var(--spacing-xl) var(--spacing-m);
+    }
 
-        .price-section {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 2rem;
-            background-color: var(--color-beige);
-            border-radius: 8px;
-        }
+    .header h1 {
+        font-size: 2rem;
+        padding: 0 var(--spacing-m);
+    }
 
-        .price {
-            color: var(--color-burgundy);
-            font-size: 1.8rem;
-            font-weight: bold;
-            font-family: 'Cormorant Garamond', serif;
-        }
+    .header h1::after {
+        width: 80px;
+    }
 
-        .contact {
-            background-color: var(--color-beige);
-            padding: 3rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-            text-align: center;
-        }
+    .header-subtitle {
+        font-size: 1rem;
+        padding: 0 var(--spacing-m);
+    }
+}
 
-        @media (max-width: 768px) {
-            .specs-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .harpsichord-card {
-                padding: 1.5rem;
-            }
-        }
+@media (max-width: 480px) {
+    .header {
+        min-height: 40vh;
+        padding: var(--spacing-l) var(--spacing-s);
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .header h1::after {
+        width: 60px;
+    }
+}
+
+
+
+
+/* ===== BIOGRAPHY STYLES ===== */
+
+/* Container principal de la biographie */
+.biography {
+    position: relative;
+    background: linear-gradient(
+        to bottom right,
+        var(--color-parchment),
+        var(--color-ivory)
+    );
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    margin: var(--spacing-xxl) auto;
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-medium);
+    max-width: var(--width-content);
+}
+
+/* Bordure décorative */
+.biography::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-l);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Titre de la biographie */
+.biography h2 {
+    font-size: 2rem;
+    color: var(--color-burgundy);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Ligne décorative sous le titre */
+.biography h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: var(--spacing-s) auto 0;
+}
+
+/* Grid layout pour le contenu */
+.biography-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+/* Styles pour le texte */
+.biography-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-wood-dark);
+}
+
+.biography-text p {
+    margin-bottom: var(--spacing-m);
+}
+
+.biography-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Styles pour l'image */
+.biography-image {
+    width: 100%;
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-strong);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease-out;
+}
+
+.biography-image:hover {
+    transform: rotate(0deg);
+}
+
+/* Media queries complètes */
+@media (max-width: 1024px) {
+    .biography {
+        padding: var(--spacing-xl);
+        margin: var(--spacing-xl) var(--spacing-m);  /* Changed from auto */
+    }
+
+    .biography h2 {
+        font-size: 1.8rem;
+    }
+
+    .biography-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-l);
+    }
+
+    .biography-image {
+        max-width: 500px;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .biography-text {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .biography {
+        padding: var(--spacing-l);
+    }
+
+    .biography h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-l);
+    }
+
+    .biography-content {
+        gap: var(--spacing-l);
+    }
+
+    .biography-text {
+        font-size: 1rem;
+    }
+
+    .biography-text p {
+        margin-bottom: var(--spacing-s);
+    }
+
+    .biography-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .biography {
+        padding: var(--spacing-m);
+        margin: var(--spacing-l) var(--spacing-s);  /* Changed from auto */
+        border-radius: var(--radius-m);
+    }
+
+    .biography h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-m);
+    }
+
+    .biography h2::after {
+        width: 60px;
+        margin-top: var(--spacing-xs);
+    }
+
+    .biography-content {
+        gap: var(--spacing-m);
+    }
+
+    .biography::before {
+        border-radius: var(--radius-m);
+    }
+}
+
+/* ===== EXPERTISE STYLES ===== */
+
+/* Container principal de l'expertise */
+.expertise-banner {
+    background-color: var(--color-parchment);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    margin: var(--spacing-xxl) auto;
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-medium);
+    max-width: var(--width-content);
+    position: relative;
+}
+
+/* Effet de bordure subtil */
+.expertise-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-gold),
+        transparent
+    );
+}
+
+/* Container du contenu */
+.expertise-content {
+    max-width: var(--width-text);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Titre de la section */
+.expertise-content h2 {
+    color: var(--color-burgundy);
+    margin-bottom: var(--spacing-l);
+    font-size: 2rem;
+    font-family: var(--font-display);
+}
+
+/* Texte de l'expertise */
+.expertise-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-wood-dark);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+    .expertise-banner {
+        margin: var(--spacing-xl) var(--spacing-m);
+        padding: var(--spacing-xl);
+    }
+
+    .expertise-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .expertise-banner {
+        padding: var(--spacing-l);
+    }
+
+    .expertise-content p {
+        font-size: 1rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .expertise-banner {
+        padding: var(--spacing-m);
+        margin: var(--spacing-l) var(--spacing-s);
+    }
+
+    .expertise-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .expertise-banner::before {
+        width: 80%;
+    }
+}
+
+/* ===== HARPSICHORD CARD STYLES ===== */
+
+/* Container principal de la carte */
+.harpsichord-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-l);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+    box-shadow: var(--shadow-strong);
+    max-width: var(--width-content);
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.harpsichord-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Titre de la carte */
+.harpsichord-card h2 {
+    color: var(--color-wood);
+    margin-bottom: var(--spacing-l);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.harpsichord-card h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: var(--spacing-s) auto 0;
+}
+
+/* ===== GALLERY STYLES ===== */
+.gallery-container {
+    margin: var(--spacing-xl) 0;
+}
+
+/* Image principale */
+.photo-main {
+    width: 100%;
+    border-radius: var(--radius-m);
+    margin-bottom: var(--spacing-l);
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+.photo-main:hover {
+    transform: scale(1.01);
+}
+
+/* Grille des photos */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-m);
+}
+
+.photo-detail-container {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-s);
+    overflow: hidden;
+    background-color: var(--color-parchment);
+    box-shadow: var(--shadow-subtle);
+}
+
+.photo-detail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-detail:hover {
+    transform: scale(1.05);
+}
+
+/* ===== MAKER INFO STYLES ===== */
+.maker-info {
+    background-color: var(--color-parchment);
+    padding: var(--spacing-l);
+    border-radius: var(--radius-m);
+    margin: var(--spacing-xl) 0;
+    border-left: 4px solid var(--color-gold);
+    font-style: italic;
+    box-shadow: var(--shadow-subtle);
+    line-height: 1.8;
+}
+
+.maker-info p {
+    margin-bottom: var(--spacing-m);
+}
+
+.maker-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== AUDIO SECTION STYLES ===== */
+.audio-section {
+    background-color: var(--color-parchment);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-m);
+    margin: var(--spacing-xl) 0;
+    box-shadow: var(--shadow-subtle);
+}
+
+.audio-section h3 {
+    color: var(--color-burgundy);
+    margin-bottom: var(--spacing-m);
+    font-size: 1.5rem;
+}
+
+.streaming-links {
+    display: flex;
+    gap: var(--spacing-m);
+    margin-top: var(--spacing-l);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.streaming-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-s) var(--spacing-l);
+    background-color: var(--color-burgundy);
+    color: var(--color-white);
+    border-radius: var(--radius-s);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.streaming-button:hover {
+    background-color: var(--color-wood);
+    color: var(--color-white);
+}
+
+/* ===== SPECIFICATIONS STYLES ===== */
+.specs {
+    background-color: var(--color-parchment);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-m);
+    margin: var(--spacing-xl) 0;
+    box-shadow: var(--shadow-subtle);
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-l);
+}
+
+.specs-section h4 {
+    color: var(--color-burgundy);
+    margin-bottom: var(--spacing-m);
+    font-size: 1.3rem;
+}
+
+.specs ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.specs li {
+    margin: var(--spacing-xs) 0;
+    padding-left: var(--spacing-m);
+    position: relative;
+    line-height: 1.6;
+}
+
+.specs li::before {
+    content: "•";
+    color: var(--color-gold);
+    position: absolute;
+    left: 0;
+}
+
+/* ===== PRICE SECTION STYLES ===== */
+.price-section {
+    text-align: center;
+    background-color: var(--color-parchment);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-m);
+    margin: var(--spacing-xl) 0;
+    box-shadow: var(--shadow-medium);
+}
+
+.price {
+    color: var(--color-burgundy);
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: var(--font-display);
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1024px) {
+    .harpsichord-card {
+        padding: var(--spacing-l);
+        margin: var(--spacing-xl) var(--spacing-m);
+    }
+
+    .harpsichord-card h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .streaming-links {
+        flex-direction: column;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .harpsichord-card {
+        padding: var(--spacing-m);
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price {
+        font-size: 1.5rem;
+    }
+
+    .maker-info,
+    .audio-section,
+    .specs,
+    .price-section {
+        padding: var(--spacing-m);
+    }
+}
+
+/* ===== CONTACT STYLES ===== */
+
+/* Container principal du contact */
+.contact {
+    background-color: var(--color-parchment);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    border-radius: var(--radius-m);
+    margin: var(--spacing-xxl) auto;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    max-width: var(--width-content);
+    position: relative;
+}
+
+/* Effet de bordure subtil */
+.contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-gold),
+        transparent
+    );
+}
+
+/* Titre de la section */
+.contact h2 {
+    color: var(--color-burgundy);
+    margin-bottom: var(--spacing-l);
+    font-size: 2rem;
+    font-family: var(--font-display);
+}
+
+/* Texte d'introduction */
+.contact p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-l);
+    color: var(--color-wood-dark);
+}
+
+/* Container des détails de contact */
+.contact-details {
+    margin-top: var(--spacing-xl);
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--color-wood);
+}
+
+.contact-details p {
+    margin-bottom: var(--spacing-s);
+}
+
+.contact-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+    .contact {
+        margin: var(--spacing-xl) var(--spacing-m);
+        padding: var(--spacing-xl);
+    }
+
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: var(--spacing-l);
+    }
+
+    .contact p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: var(--spacing-m);
+        margin: var(--spacing-l) var(--spacing-s);
+    }
+
+    .contact h2 {
+        font-size: 1.6rem;
+    }
+
+    .contact::before {
+        width: 80%;
+    }
+}
+
+/* Préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .biography-image {
+        transform: none !important;
+    }
+
+    .harpsichord-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.harpsichord-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.harpsichord-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Collection de Clavecins Betty Bruylants</h1>
-    </header>
+<header class="header">
+    <h1>Collection de Clavecins Betty Bruylants</h1>
+    <p class="header-subtitle">Une sélection d'instruments d'exception</p>
+</header>
+
+
 
     <div class="container">
+
+<section class="biography">
+    <h2>Betty Bruylants (née en 1932)</h2>
+    <div class="biography-content">
+        <div class="biography-text">
+            <p>Claveciniste belge de renom, Betty Bruylants a marqué pendant plus d'un demi-siècle le paysage de la musique ancienne en Belgique. Formée initialement au piano au Conservatoire Royal de Mons, elle se tourne vers le clavecin et se perfectionne auprès de maîtres prestigieux : Aimée Van De Wiele à Paris et Kenneth Gilbert à Anvers.</p>
+            
+            <p>Sa carrière de concertiste l'a menée sur de nombreuses scènes européennes et internationales, de l'Espagne à l'Inde, où elle s'est particulièrement illustrée comme ambassadrice du répertoire baroque belge du XVIIIe siècle. En 1991, son engagement pour le clavecin la conduit à fonder "Les Amis du Clavecin", puis à créer en 1994 "Les Jeudis du Clavecin" à Bruxelles, une série de concerts intimistes qui ont enrichi la vie musicale bruxelloise.</p>
+
+            <p>Son école de clavecin, ouverte à Bruxelles en 1985, a formé toute une génération de musiciens, du simple amateur passionné aux jeunes talents prometteurs. Aujourd'hui, sa collection d'instruments exceptionnels témoigne d'une vie dédiée à l'art du clavecin et à son rayonnement.</p>
+        </div>
+        <img src="images/betty.jpg" alt="Portrait de Betty Bruylants" class="biography-image">
+    </div>
+</section>
+
+
+
+
+
+        <section class="expertise-banner">
+            <div class="expertise-content">
+                <h2>Expertise</h2>
+                <p>Les instruments de cette collection ont été évalués par Jean-Luc Wolfs, facteur de clavecins établi à Lathuy. Ancien ingénieur agronome, il apporte depuis 1982 une approche unique à la facture de clavecins, alliant rigueur technique et sensibilité musicale. Sa collaboration avec des maîtres tels que Franck Hubbard et Alain Anselm, ainsi que sa profonde connaissance des instruments historiques, en font une référence respectée dans le domaine.</p>
+            </div>
+        </section>
+
         <!-- Clavecin Allemand -->
         <section class="harpsichord-card">
             <h2>Clavecin Allemand par Alain Anselm</h2>
             
             <div class="gallery-container">
-                <!-- Photo principale -->
-                <a href="images/anselm/main.jpg" data-lightbox="anselm" data-title="Vue générale du clavecin Anselm">
-                    <img class="photo-main" src="images/anselm/main.jpg" alt="Vue générale du clavecin Anselm">
+                <a href="images/anselm/main.jpg" data-lightbox="anselm" data-title="Clavecin Allemand par Alain Anselm - Vue d'ensemble">
+                    <img class="photo-main" src="images/anselm/main.jpg" alt="Vue d'ensemble du clavecin Anselm">
                 </a>
 
-                <!-- Grille de photos détaillées -->
                 <div class="photo-grid">
                     <div class="photo-detail-container">
-                        <a href="images/anselm/detail1.jpg" data-lightbox="anselm" data-title="Décoration par Thierry Bosquet">
-                            <img class="photo-detail" src="images/anselm/detail1.jpg" alt="Décoration Bosquet">
+                        <a href="images/anselm/detail1.jpg" data-lightbox="anselm" data-title="Double clavier (Fa-Sol)">
+                            <img class="photo-detail" src="images/anselm/detail1.jpg" alt="Double clavier du clavecin Anselm">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/anselm/detail2.jpg" data-lightbox="anselm" data-title="Vue des deux claviers">
-                            <img class="photo-detail" src="images/anselm/detail2.jpg" alt="Claviers">
+                        <a href="images/anselm/detail2.jpg" data-lightbox="anselm" data-title="Table d'harmonie avec rosace">
+                            <img class="photo-detail" src="images/anselm/detail2.jpg" alt="Table d'harmonie avec rosace">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/anselm/detail3.jpg" data-lightbox="anselm" data-title="Table d'harmonie">
-                            <img class="photo-detail" src="images/anselm/detail3.jpg" alt="Table d'harmonie">
+                        <a href="images/anselm/detail3.jpg" data-lightbox="anselm" data-title="Vue de profil avec piétement">
+                            <img class="photo-detail" src="images/anselm/detail3.jpg" alt="Vue de profil avec piétement">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/anselm/detail4.jpg" data-lightbox="anselm" data-title="Vue de profil">
-                            <img class="photo-detail" src="images/anselm/detail4.jpg" alt="Vue de profil">
+                        <a href="images/anselm/detail4.jpg" data-lightbox="anselm" data-title="Décoration par Thierry Bosquet">
+                            <img class="photo-detail" src="images/anselm/detail4.jpg" alt="Décoration par Thierry Bosquet">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/anselm/detail5.jpg" data-lightbox="anselm" data-title="Détail du piétement">
-                            <img class="photo-detail" src="images/anselm/detail5.jpg" alt="Piétement">
+                        <a href="images/anselm/detail5.jpg" data-lightbox="anselm" data-title="Vue intérieure - Mécanique et sautereaux">
+                            <img class="photo-detail" src="images/anselm/detail5.jpg" alt="Vue intérieure de la mécanique">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/anselm/detail6.jpg" data-lightbox="anselm" data-title="Signature du facteur Alain Anselm">
+                            <img class="photo-detail" src="images/anselm/detail6.jpg" alt="Signature d'Alain Anselm">
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="maker-info">
-                    <p>Alain Anselm est un facteur de clavecins français reconnu pour son excellence dans la tradition allemande. Son travail est caractérisé par une attention méticuleuse aux détails historiques et une qualité de fabrication exceptionnelle.</p>
-                    <p>La décoration de cet instrument a été réalisée par Thierry Bosquet, artiste belge de renom ayant notamment travaillé pour le Théâtre Royal de la Monnaie. Ses décorations de clavecins sont reconnues pour leur finesse et leur fidélité aux styles historiques.</p>
-                </div>
+                <p>Alain Anselm est un facteur de clavecins de réputation internationale. Organiste et organologue spécialiste des instruments anciens à clavier, il a également enseigné l'organologie et contribué activement à la protection du patrimoine instrumental français, notamment en tant que membre du Conseil scientifique du musée de la Musique de Paris et de la Commission supérieure des Monuments historiques.</p>
+                <p>La décoration de cet instrument est l'œuvre de Thierry Bosquet (né en 1937), artiste belge de renommée internationale. Scénographe et décorateur notamment pour le Théâtre Royal de la Monnaie, son style s'inspire fortement du baroque. Son travail sur ce clavecin reflète sa maîtrise exceptionnelle des arts décoratifs historiques et sa compréhension profonde de l'esthétique baroque.</p>
+            </div>
 
-                <div class="expertise-section">
-                    <h4>Expertise</h4>
-                    <p>Cet instrument a été expertisé par Jean-Luc Wolfs, facteur de clavecins réputé à Lathuy (<a href="https://clavecin-wolfsdachy.be/" target="_blank">Clavecin Wolfsdachy</a>).</p>
+            <div class="audio-section">
+                <h3>Écoutez cet instrument</h3>
+                <p>Découvrez les qualités sonores exceptionnelles de ce clavecin à travers un enregistrement professionnel.</p>
+                <div class="streaming-links">
+                    <a href="https://open.spotify.com/album/3SVkS1kAaIxUs1goC167bX" target="_blank" class="streaming-button">
+                        Écouter sur Spotify
+                    </a>
+                    <a href="https://music.youtube.com/playlist?list=OLAK5uy_lWwDLrKFp3rgDI7ZPTcPDIQRCSd8aGqM0" target="_blank" class="streaming-button">
+                        Écouter sur YouTube Music
+                    </a>
                 </div>
+            </div>
 
-                <div class="specs">
+            <div class="specs">
                 <div class="specs-grid">
                     <div class="specs-section">
                         <h4>Informations Générales</h4>
@@ -256,24 +982,24 @@
                             <li>Année de fabrication : [À compléter]</li>
                             <li>Décoration : Thierry Bosquet</li>
                             <li>Style : Allemand</li>
+                            <li>Poids : 67 kg</li>
                         </ul>
                     </div>
 
                     <div class="specs-section">
-                        <h4>Caractéristiques Techniques</h4>
+                        <h4>Caractéristiques Musicales</h4>
                         <ul>
-                            <li>Nombre de claviers : 2</li>
-                            <li>Étendue : [À compléter]</li>
-                            <li>Disposition des jeux : [À compléter]</li>
-                            <li>Tempérament : [À compléter]</li>
+                            <li>Deux claviers de 63 notes (fa à sol)</li>
+                            <li>Deux jeux de 8' et un jeu de 4'</li>
+                            <li>Transpositeur 392/415/440</li>
                         </ul>
                     </div>
 
                     <div class="specs-section">
                         <h4>Dimensions</h4>
                         <ul>
-                            <li>Longueur : [À compléter]</li>
-                            <li>Largeur : [À compléter]</li>
+                            <li>Longueur : 250 cm</li>
+                            <li>Largeur : 105 cm</li>
                             <li>Hauteur totale : [À compléter]</li>
                         </ul>
                     </div>
@@ -299,53 +1025,49 @@
             <h2>Clavecin Flamand par Knud Kaufmann</h2>
             
             <div class="gallery-container">
-                <!-- Photo principale -->
-                <div class="main-photo-container">
-                    <a href="images/kaufmann/main.jpg" data-lightbox="kaufmann" data-title="Vue générale du clavecin Kaufmann">
-                        <img class="photo-main" src="images/kaufmann/main.jpg" alt="Vue générale du clavecin Kaufmann">
-                    </a>
-                </div>
+                <a href="images/kaufmann/main.jpg" data-lightbox="kaufmann" data-title="Clavecin Flamand par Knud Kaufmann - Vue d'ensemble">
+                    <img class="photo-main" src="images/kaufmann/main.jpg" alt="Vue d'ensemble du clavecin Kaufmann">
+                </a>
 
-                <!-- Grille de photos détaillées -->
                 <div class="photo-grid">
                     <div class="photo-detail-container">
-                        <a href="images/kaufmann/detail1.jpg" data-lightbox="kaufmann" data-title="Vue des deux claviers">
-                            <img class="photo-detail" src="images/kaufmann/detail1.jpg" alt="Claviers">
+                        <a href="images/kaufmann/detail1.jpg" data-lightbox="kaufmann" data-title="Double clavier (Fa-Sol)">
+                            <img class="photo-detail" src="images/kaufmann/detail1.jpg" alt="Double clavier du clavecin Kaufmann">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/kaufmann/detail2.jpg" data-lightbox="kaufmann" data-title="Table d'harmonie">
-                            <img class="photo-detail" src="images/kaufmann/detail2.jpg" alt="Table d'harmonie">
+                        <a href="images/kaufmann/detail2.jpg" data-lightbox="kaufmann" data-title="Table d'harmonie avec rosace">
+                            <img class="photo-detail" src="images/kaufmann/detail2.jpg" alt="Table d'harmonie avec rosace">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/kaufmann/detail3.jpg" data-lightbox="kaufmann" data-title="Détail de la rosace">
-                            <img class="photo-detail" src="images/kaufmann/detail3.jpg" alt="Rosace">
+                        <a href="images/kaufmann/detail3.jpg" data-lightbox="kaufmann" data-title="Vue de profil avec piétement">
+                            <img class="photo-detail" src="images/kaufmann/detail3.jpg" alt="Vue de profil avec piétement">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/kaufmann/detail4.jpg" data-lightbox="kaufmann" data-title="Vue de profil">
-                            <img class="photo-detail" src="images/kaufmann/detail4.jpg" alt="Vue de profil">
+                        <a href="images/kaufmann/detail4.jpg" data-lightbox="kaufmann" data-title="Détails de la décoration">
+                            <img class="photo-detail" src="images/kaufmann/detail4.jpg" alt="Détails de la décoration">
                         </a>
                     </div>
                     <div class="photo-detail-container">
-                        <a href="images/kaufmann/detail5.jpg" data-lightbox="kaufmann" data-title="Signature du facteur">
-                            <img class="photo-detail" src="images/kaufmann/detail5.jpg" alt="Signature">
+                        <a href="images/kaufmann/detail5.jpg" data-lightbox="kaufmann" data-title="Vue intérieure - Mécanique et sautereaux">
+                            <img class="photo-detail" src="images/kaufmann/detail5.jpg" alt="Vue intérieure de la mécanique">
+                        </a>
+                    </div>
+                    <div class="photo-detail-container">
+                        <a href="images/kaufmann/detail6.jpg" data-lightbox="kaufmann" data-title="Signature du facteur Knud Kaufmann">
+                            <img class="photo-detail" src="images/kaufmann/detail6.jpg" alt="Signature de Knud Kaufmann">
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="maker-info">
-                    <p>Knud Kaufmann est un facteur de clavecins elge. Formé à la tradition flamande, il est reconnu pour l'excellence de ses instruments inspirés des grands maîtres flamands. Ses clavecins sont appréciés pour leur sonorité exceptionnelle et leur fidélité aux techniques historiques.</p>
-                </div>
+                <p>Knud Kaufmann (1909-1991), facteur de clavecins danois, s'établit à Bruxelles vers 1930 comme accordeur et technicien de piano. Impliqué dans le renouveau de la musique ancienne, il commence la fabrication de clavecins après la Seconde Guerre mondiale. À partir des années 1960, il se spécialise dans la réalisation de copies d'instruments historiques, développant une expertise particulière dans la tradition flamande.</p>
+            </div>
 
-                <div class="expertise-section">
-                    <h4>Expertise</h4>
-                    <p>Cet instrument a été expertisé par Jean-Luc Wolfs, facteur de clavecins réputé à Lathuy (<a href="https://clavecin-wolfsdachy.be/" target="_blank">Clavecin Wolfsdachy</a>).</p>
-                </div>
-
-                <div class="specs">
+            <div class="specs">
                 <div class="specs-grid">
                     <div class="specs-section">
                         <h4>Informations Générales</h4>
@@ -354,24 +1076,24 @@
                             <li>Année de fabrication : 1974</li>
                             <li>Style : Flamand</li>
                             <li>Modèle d'après : [À compléter]</li>
+                            <li>Poids : 67 kg</li>
                         </ul>
                     </div>
 
                     <div class="specs-section">
-                        <h4>Caractéristiques Techniques</h4>
+                        <h4>Caractéristiques Musicales</h4>
                         <ul>
-                            <li>Nombre de claviers : 2</li>
-                            <li>Étendue : [À compléter]</li>
-                            <li>Disposition des jeux : [À compléter]</li>
-                            <li>Tempérament : [À compléter]</li>
+                            <li>Deux claviers de 63 notes (fa à sol)</li>
+                            <li>Deux jeux de 8' et un jeu de 4'</li>
+                            <li>Transpositeur 392/415/440</li>
                         </ul>
                     </div>
 
                     <div class="specs-section">
                         <h4>Dimensions</h4>
                         <ul>
-                            <li>Longueur : [À compléter]</li>
-                            <li>Largeur : [À compléter]</li>
+                            <li>Longueur : 250 cm</li>
+                            <li>Largeur : 105 cm</li>
                             <li>Hauteur totale : [À compléter]</li>
                         </ul>
                     </div>
@@ -394,6 +1116,32 @@
 
         <section class="contact">
             <h2>Contact</h2>
-            <p>Pour plus d'informations ou pour organiser une visite :</p>
-            <p>Téléphone : [À compléter]</p>
-            <p>Email :
+            <p>Pour toute demande d'information ou pour organiser une visite privée :</p>
+            <div class="contact-details">
+                <p>Sur rendez-vous uniquement</p>
+                <p>Téléphone : [À compléter]</p>
+                <p>Email : [À compléter]</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.harpsichord-card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+
+
+</body></html>
