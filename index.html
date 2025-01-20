@@ -11,6 +11,24 @@
 </head>
 <body>
 
+<nav class="nav-menu">
+    <button class="hamburger" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+    
+    <div class="nav-overlay"></div>
+    
+    <ul class="nav-links">
+        <li><a href="#" data-section="biography">Betty Bruylants</a></li>
+        <li><a href="#" data-section="expertise">Expertise</a></li>
+        <li><a href="#" data-section="anselm">Clavecin Allemand</a></li>
+        <li><a href="#" data-section="kaufmann">Clavecin Flamand</a></li>
+        <li><a href="#" data-section="contact">Contact</a></li>
+    </ul>
+</nav>
+
 
 <header class="header">
     <h1>Collection de Clavecins Betty Bruylants</h1>
@@ -19,7 +37,7 @@
 
 
 <div class="section-wrapper">
-        <section class="section-inner decorated-section">
+        <section class="section-inner decorated-section" id="biography">
             <h2>Betty Bruylants (née en 1932)</h2>
             <div class="biography-content">
                 <div class="biography-text">
@@ -38,7 +56,7 @@
 
     <!-- Expertise Section -->
     <div class="section-wrapper">
-        <section class="expertise section-inner decorated-section">
+        <section class="expertise section-inner decorated-section" id="expertise">
             <h2>Expertise</h2>
             <p>Les instruments de cette collection ont été évalués par Jean-Luc Wolfs, facteur de clavecins établi à Lathuy. Ancien ingénieur agronome, il apporte depuis 1982 une approche unique à la facture de clavecins, alliant rigueur technique et sensibilité musicale. Sa collaboration avec des maîtres tels que Franck Hubbard et Alain Anselm, ainsi que sa profonde connaissance des instruments historiques, en font une référence respectée dans le domaine.</p>
         </section>
@@ -50,7 +68,7 @@
 
     <!-- German Harpsichord Section -->
     <div class="section-wrapper">
-        <section class="harpsichord-card section-inner decorated-section">
+        <section class="harpsichord-card section-inner decorated-section" id="anselm">
             <h2>Clavecin Allemand par Alain Anselm</h2>
             <div class="gallery-container">
             
@@ -161,7 +179,7 @@
 
         <!-- Clavecin Flamand -->
     <div class="section-wrapper">
-        <section class="harpsichord-card section-inner decorated-section">
+        <section class="harpsichord-card section-inner decorated-section" id="kaufmann">
             <h2>Clavecin Flamand par Knud Kaufmann</h2>
             
             <div class="gallery-container">
@@ -258,7 +276,7 @@
 
     <!-- Contact Section -->
     <div class="section-wrapper">
-        <section class="contact section-inner decorated-section">
+        <section class="contact section-inner decorated-section" id="contact">
             <h2>Contact</h2>
             <p>Pour toute demande d'information ou pour organiser une visite privée :</p>
             <div class="contact-details">
@@ -323,6 +341,53 @@ scrollTopBtn.addEventListener('mouseout', () => {
     document.querySelectorAll('.harpsichord-card').forEach(card => {
         observer.observe(card);
     });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when clicking overlay
+    navOverlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
+
+    // Handle link clicks
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            const section = document.querySelector(`[id="${sectionId}"]`);
+            
+            if (section) {
+                navMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                
+                section.scrollIntoView({ 
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Hide menu on resize if open
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+});
 </script>
 
 
