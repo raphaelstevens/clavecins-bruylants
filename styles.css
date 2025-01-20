@@ -1,0 +1,565 @@
+:root {
+    /* Palette de couleurs - regroupée et simplifiée */
+    --color-primary: #4A3B32;    /* wood-dark */
+    --color-secondary: #8B6B4A;  /* wood */
+    --color-accent: #C4A484;     /* gold */
+    --color-bg-primary: #F5F2E9; /* ivory */
+    --color-bg-secondary: #E8E2D5; /* parchment */
+    --color-highlight: #722F37;  /* burgundy */
+    --color-text: #2C1810;
+    --color-white: #FFFFFF;
+    
+    /* Typographie */
+    --font-serif: 'Crimson Text', Georgia, serif;
+    --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-sans: 'Lato', sans-serif;
+    
+    /* Système d'espacement unifié */
+    --space-unit: 0.5rem;
+    --spacing-xs: var(--space-unit);        /* 8px */
+    --spacing-s: calc(var(--space-unit) * 2);   /* 16px */
+    --spacing-m: calc(var(--space-unit) * 3);   /* 24px */
+    --spacing-l: calc(var(--space-unit) * 4);   /* 32px */
+    --spacing-xl: calc(var(--space-unit) * 6);  /* 48px */
+    --spacing-xxl: calc(var(--space-unit) * 8); /* 64px */
+    
+    /* Système de rayons */
+    --radius-base: 4px;
+    --radius-s: var(--radius-base);
+    --radius-m: calc(var(--radius-base) * 2);
+    --radius-l: calc(var(--radius-base) * 3);
+    
+    /* Système d'ombres unifié */
+    --shadow-color: 0, 0, 0;
+    --shadow-subtle: 0 2px 4px rgba(var(--shadow-color), 0.05);
+    --shadow-medium: 0 4px 12px rgba(var(--shadow-color), 0.08);
+    --shadow-strong: 0 8px 24px rgba(var(--shadow-color), 0.12);
+    
+    /* Conteneurs */
+    --width-content: min(1000px, 90vw);
+    --width-text: min(1000px, 85vw);
+
+    /* Animation */
+    --transition-speed: 0.3s;
+    --transition-timing: ease;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Styles de base */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-timing);
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-secondary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-m);
+}
+
+/* Style spécifique pour h2 et sa décoration */
+h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--color-highlight);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+/* Ligne décorative sous h2 */
+h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-s) auto 0;
+}
+
+h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2rem); }
+h3 { font-size: clamp(1.4rem, 3.5vw, 1.75rem); }
+h4 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
+
+/* Header styles */
+.header {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg-secondary) 0%,
+        var(--color-bg-primary) 100%
+    );
+    padding: var(--spacing-xxl) var(--spacing-l);
+    margin-bottom: var(--spacing-xxl);
+    width: 100%;
+}
+
+.header h1 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    text-align: center;
+    color: var(--color-primary);
+    max-width: var(--width-content);
+    padding: 0 var(--spacing-l);
+}
+
+.header h1::after {
+    content: "";
+    display: block;
+    width: min(120px, 20%);
+    height: 2px;
+    background-color: var(--color-accent);
+    margin: var(--spacing-m) auto 0;
+}
+
+.header-subtitle {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--color-highlight);
+    font-style: italic;
+    text-align: center;
+    max-width: var(--width-text);
+    margin: 0 auto;
+    padding: 0 var(--spacing-l);
+}
+
+/* Section styles */
+.section-wrapper {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg-secondary) 0%,
+        var(--color-bg-primary) 100%
+    );
+}
+
+.section-inner {
+    position: relative;
+    padding: var(--spacing-xxl) 0;
+    margin: 0 auto;
+    max-width: var(--width-content);
+}
+
+/* Décoration des sections */
+.decorated-section {
+    position: relative;
+}
+
+.decorated-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-accent),
+        transparent
+    );
+}
+
+/* Media queries pour la décoration des sections */
+@media (max-width: 1024px) {
+    .decorated-section::before {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .decorated-section::before {
+        width: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .decorated-section::before {
+        width: 80%;
+        height: 1px;
+    }
+}
+
+/* Biography styles */
+.biography-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+.biography-text {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--color-primary);
+}
+
+.biography-text p:not(:last-child) {
+    margin-bottom: var(--spacing-m);
+}
+
+.biography-image {
+    width: 100%;
+    box-shadow: var(--shadow-medium);
+    transform: rotate(-2deg);
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.biography-image:hover {
+    transform: rotate(0);
+}
+
+/* Expertise Section */
+.expertise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.expertise p {
+    text-align: justify;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--color-primary);
+
+}
+
+/* Harpsichord Card Styles */
+.harpsichord-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.harpsichord-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gallery Styles */
+.gallery-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.photo-main {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-m);
+    margin-bottom: var(--spacing-m);
+    box-shadow: var(--shadow-medium);
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.photo-main:hover {
+    transform: scale(1.01);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-m);
+    margin-top: var(--spacing-l);
+}
+
+.photo-detail-container {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-subtle);
+}
+
+.photo-detail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.photo-detail:hover {
+    transform: scale(1.05);
+}
+
+/* Maker Info Styles */
+.maker-info {
+    margin: 0 auto var(--spacing-xl);
+}
+
+.maker-info p {
+    text-align: justify;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--color-primary);
+}
+
+.maker-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Audio Section Styles */
+.audio-section {
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+    padding: var(--spacing-l) var(--spacing-m);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-m);
+}
+
+.audio-section h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-m);
+}
+
+.streaming-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-m);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-m);
+}
+
+.streaming-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-s) var(--spacing-m);
+    background-color: var(--color-highlight);
+    color: var(--color-white);
+    border-radius: var(--radius-m);
+    transition: background-color var(--transition-speed) var(--transition-timing);
+}
+
+.streaming-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+/* Specifications Styles */
+.specs {
+    margin-bottom: var(--spacing-xl);
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Force 2 colonnes */
+    gap: var(--spacing-l);
+}
+
+.specs-section {
+    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-m);
+    border-radius: var(--radius-m);
+}
+
+.specs-section h4 {
+    color: var(--color-highlight);
+    margin-bottom: var(--spacing-s);
+    font-size: 1.2rem;
+}
+
+.specs-section ul {
+    list-style: none;
+}
+
+.specs-section li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+
+/* Price Section */
+.price-section {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.price {
+    display: inline-block;
+    background-color: var(--color-highlight);
+    color: var(--color-white);
+    padding: var(--spacing-s) var(--spacing-l);
+    border-radius: var(--radius-m);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Media Queries for Harpsichord Sections */
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .streaming-links {
+        flex-direction: column;
+    }
+    
+    .streaming-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.contact p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-l);
+}
+
+.contact-details {
+    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-l);
+    border-radius: var(--radius-m);
+    margin-top: var(--spacing-l);
+    box-shadow: var(--shadow-subtle);
+}
+
+.contact-details p {
+    margin-bottom: var(--spacing-s);
+    font-family: var(--font-sans);
+}
+
+.contact-details p:last-child {
+    margin-bottom: 0;
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-highlight);    /* Couleur de base plus visible */
+    color: var(--color-accent);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#scrollTopBtn.visible {    /* État quand le bouton est visible */
+    opacity: 1;
+}
+
+#scrollTopBtn:hover {
+    background-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+}
+
+#scrollTopBtn:active {
+    transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .contact {
+        padding: var(--spacing-l) var(--spacing-m);
+    }
+    
+    .contact-details {
+        padding: var(--spacing-m);
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: var(--spacing-m) var(--spacing-s);
+    }
+}
+
+/* End of stylesheet */
+@media (max-width: 1024px) {
+    .biography-content {
+        grid-template-columns: 1fr;
+    }
+
+    .biography-image {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xxl: calc(var(--space-unit) * 6);
+        --spacing-xl: calc(var(--space-unit) * 4);
+    }
+
+    .header {
+        min-height: 50vh;
+        padding: var(--spacing-xl) var(--spacing-m);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xxl: calc(var(--space-unit) * 4);
+        --spacing-xl: calc(var(--space-unit) * 3);
+    }
+
+    .header {
+        min-height: 40vh;
+        padding: var(--spacing-l) var(--spacing-s);
+    }
+}
