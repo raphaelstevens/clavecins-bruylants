@@ -6,7 +6,7 @@
     /* Tailles de police relatives */
     --text-xs: clamp(0.875rem, 1.5vw, 0.95rem);     /* 14px - 15.2px */
     --text-sm: clamp(0.95rem, 2vw, 1.1rem);         /* 15.2px - 17.6px */
-    --text-base: clamp(1.1rem, 2.2vw, 1.25rem);     /* 17.6px - 20px */
+    --text-base: clamp(1.2rem, 2.2vw, 1.25rem);     /* 17.6px - 20px */
     --text-lg: clamp(1.3rem, 2.5vw, 1.4rem);        /* 20.8px - 22.4px */
     --text-xl: clamp(1.5rem, 3vw, 1.6rem);          /* 24px - 25.6px */
     --text-2xl: clamp(1.7rem, 3.5vw, 2.1rem);       /* 27.2px - 33.6px */
@@ -378,6 +378,7 @@ body.no-scroll {
 .biography-image {
     width: 100%;
     box-shadow: var(--shadow-medium);
+    border-radius: var(--radius-m);
     transform: rotate(-2deg);
     transition: transform var(--transition-speed) var(--transition-timing);
 }
@@ -566,59 +567,59 @@ body.no-scroll {
     }
 }
 
-/* Audio Section Styles */
-.audio-section {
-    margin: 0 auto var(--spacing-xl);
-    text-align: center;
-    padding: var(--spacing-l) var(--spacing-m);
+/* Styles pour la section de valorisation */
+.value-section {
     background-color: var(--color-bg-secondary);
+    padding: var(--spacing-xl);
     border-radius: var(--radius-m);
 }
 
-.audio-section h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-m);
-    font-size: var(--text-2xl);
-}
-
-.streaming-links {
+.value-details {
     display: flex;
-    justify-content: center;
-    gap: var(--spacing-m);
-    flex-wrap: wrap;
-    margin-top: var(--spacing-m);
-}
-
-.streaming-button {
-    display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    padding: var(--spacing-s) var(--spacing-m);
-    background-color: var(--color-highlight);
-    color: var(--color-white);
-    border-radius: var(--radius-m);
+    gap: var(--spacing-s);
+}
+
+.value-details p {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
     font-size: var(--text-base);
-    transition: background-color var(--transition-speed) var(--transition-timing);
+    margin: 0;
+    line-height: 1.6;
 }
 
-.streaming-button:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-}
-
-/* Price Section */
-.price-section {
-    text-align: center;
-    margin-top: var(--spacing-xl);
-}
-
-.price {
-    display: inline-block;
-    background-color: var(--color-highlight);
-    color: var(--color-white);
-    padding: var(--spacing-s) var(--spacing-l);
-    border-radius: var(--radius-m);
-    font-size: var(--text-xl);
+.value-indication {
+    font-size: var(--text-lg) !important;
     font-weight: 600;
+    color: var(--color-highlight) !important;
+    margin: var(--spacing-s) 0 !important;
+}
+
+.value-asterisk {
+    font-size: var(--text-sm);
+    max-width: 80%;
+    text-align: center;
+    color: var(--color-secondary) !important;
+    margin-top: var(--spacing-m) !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .value-section {
+        padding: var(--spacing-l);
+    }
+
+    .value-asterisk {
+        max-width: 95%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .value-section {
+        padding: var(--spacing-m);
+    }
 }
 
 /* Contact Section */
@@ -639,17 +640,46 @@ body.no-scroll {
     padding: var(--spacing-l);
     border-radius: var(--radius-m);
     margin-top: var(--spacing-l);
-    box-shadow: var(--shadow-subtle);
+}
+
+.contact-items {
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .contact-details p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
     margin-bottom: var(--spacing-s);
-    font-family: var(--font-sans);
+    color: var(--color-primary);
     font-size: var(--text-base);
 }
 
 .contact-details p:last-child {
     margin-bottom: 0;
+}
+
+.contact-details svg {
+    color: var(--color-highlight);
+    flex-shrink: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .contact {
+        padding: var(--spacing-l) var(--spacing-m);
+    }
+    
+    .contact-details {
+        padding: var(--spacing-m);
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: var(--spacing-m) var(--spacing-s);
+    }
 }
 
 /* Scroll to Top Button */
