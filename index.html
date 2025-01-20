@@ -31,6 +31,7 @@
 
 
 <header class="header">
+    <div class="header-background"></div>
     <h1>Les Clavecins de Betty Bruylants</h1>
     <p class="header-subtitle">Au cœur d'une collection personnelle constituée avec passion durant plus de cinquante ans, deux clavecins d'exception sont aujourd'hui proposés aux connaisseurs et passionnés de musique ancienne.</p>
 </header>
@@ -41,13 +42,13 @@
             <h2>Betty Bruylants</h2>
             <div class="biography-content">
                 <div class="biography-text">
-                    <p>Betty Bruylants (née en 1932) a marqué pendant plus d'un demi-siècle le paysage de la musique ancienne en Belgique. Après une formation de pianiste dans la classe de Naum Sluzny au Conservatoire Royal de Mons, elle s'oriente vers le clavecin et se perfectionne auprès de maîtres prestigieux : Aimée Van De Wiele à Paris et Kenneth Gilbert au Vlaams Muziek Conservatorium d'Anvers.</p>
+                    <p>Betty Bruylants (née en 1932) a marqué pendant plus d'un demi-siècle le paysage de la musique ancienne en Belgique. Son parcours musical s'épanouit d'abord au piano auprès de Naum Sluzny au Conservatoire Royal de Mons, avant de trouver sa voie au clavecin sous la guidance d'Aimée Van De Wiele à Paris et de Kenneth Gilbert au Vlaams Muziek Conservatorium d'Anvers.</p>
                     
 <p>Sa carrière de concertiste l'a menée sur les scènes internationales de l'Europe à l'Inde. Elle s'est particulièrement illustrée comme ambassadrice du répertoire baroque belge du XVIIIe siècle, mettant en lumière des compositeurs essentiels tels que Jean-Baptiste Loeillet, Hubert Renotte, Dieudonné Raick et Joseph-Hector Fiocco.</p>
 
-                    <p>Son engagement pour le clavecin la mène à diriger successivement le Festival de Roquebrun (France) et Clavecins en fête à Tourinnes-la-Grosse (Belgique). En 1985, elle ouvre une école privée de clavecin à Bruxelles, formant toute une génération de musiciens, puis fonde en 1991 'Les Amis du Clavecin' et crée 'Les Jeudis du Clavecin', une série de concerts intimistes enrichissant la vie musicale bruxelloise.</p>
+                    <p>Son engagement pour le clavecin la mène à diriger successivement le Festival de Roquebrun (France) et Clavecins En Fête à Tourinnes-la-Grosse (Belgique). L'année 1985 marque l'ouverture de son école de clavecin à Bruxelles, bientôt suivie en 1991 par la création des "Amis du Clavecin" et en 1994 des "Jeudis du Clavecin"', enrichissant ainsi la vie musicale de la capitale.</p>
 
-                    <p>Sa discographie reflète l'étendue de son parcours artistique : son interprétation des Pièces de clavecin de Jean-François Dandrieu est saluée pour sa fluidité et son élégance. Ses enregistrements des Sonates de Johann Sebastian Bach en duo avec Liliana Novak, du Mikrokosmos de Béla Bartók, de Baldassare Galuppi et des maîtres belges illustrent sa maîtrise d'un vaste répertoire.</p>
+                    <p>La discographie de Betty Bruylants dessine une carte musicale personnelle où se déploient la finesse de l'ornementation française avec Jean-François Dandrieu, le contrepoint de Bach partagé avec Liliana Novak, la modernité de Bartók, la virtuosité italienne de Galuppi, ainsi que son attachement particulier aux maîtres belges du XVIIIe siècle.</p>
                 
 <p>Sa collection d'instruments exceptionnels témoigne d'une vie dédiée à l'art du clavecin et à son rayonnement. Aujourd'hui, sa famille veille à la préservation de cet héritage musical unique.</p></div>
 
@@ -117,7 +118,7 @@
 
             <div class="maker-info">
                 <p>Alain Anselm est un facteur de clavecins de réputation internationale. Organiste et organologue spécialiste des instruments anciens à clavier, il a également enseigné l'organologie et contribué activement à la protection du patrimoine instrumental français, notamment en tant que membre du Conseil scientifique du musée de la Musique de Paris et de la Commission supérieure des Monuments historiques.</p>
-                <p>La décoration de cet instrument est l'œuvre de Thierry Bosquet (né en 1937), artiste belge de renommée internationale. Scénographe et décorateur notamment pour le Théâtre Royal de la Monnaie, son style s'inspire fortement du baroque. Son travail sur ce clavecin reflète sa maîtrise exceptionnelle des arts décoratifs historiques et sa compréhension profonde de l'esthétique baroque.</p>
+                <p>La décoration de cet instrument est l'œuvre de Thierry Bosquet (né en 1937), artiste belge de renommée internationale. Scénographe et décorateur notamment pour le Théâtre Royal de la Monnaie, son style s'inspire fortement du baroque. Son art sur cet instrument témoigne d'une profonde connaissance des traditions décoratives historiques.</p>
             </div>
 
             <div class="audio-section">
@@ -298,101 +299,7 @@
     </svg>
 </button>
 
-<script>
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-// Afficher/masquer le bouton en fonction du scroll
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.style.opacity = '1';
-    } else {
-        scrollTopBtn.style.opacity = '0';
-    }
-});
-
-// Remonter en haut au clic
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Hover effect
-scrollTopBtn.addEventListener('mouseover', () => {
-    scrollTopBtn.style.backgroundColor = 'var(--color-wood)';
-});
-
-scrollTopBtn.addEventListener('mouseout', () => {
-    scrollTopBtn.style.backgroundColor = 'var(--color-burgundy)';
-});
-</script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    document.querySelectorAll('.harpsichord-card').forEach(card => {
-        observer.observe(card);
-    });
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navOverlay = document.querySelector('.nav-overlay');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    // Toggle menu
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-    });
-
-    // Close menu when clicking overlay
-    navOverlay.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-    });
-
-    // Handle link clicks
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = link.getAttribute('data-section');
-            const section = document.querySelector(`[id="${sectionId}"]`);
-            
-            if (section) {
-                navMenu.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-                
-                section.scrollIntoView({ 
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Hide menu on resize if open
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-});
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+<script src="scripts.js"></script>
 
 </body></html>
