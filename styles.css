@@ -261,15 +261,15 @@ body.no-scroll {
 .header {
     position: relative;
     width: 100%;
-    aspect-ratio: 1200/400; /* correction des vraies dimensions */
+    min-height: 400px; /* Hauteur minimum garantie */
+    padding: var(--spacing-xl) var(--spacing-m);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #F5F2E9; /* le blanc cassé de votre image */
+    background-color: var(--color-bg-primary);
     margin-bottom: var(--spacing-xxl);
-    width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Permet au contenu de déborder si nécessaire */
 }
 
 .header-background {
@@ -320,43 +320,7 @@ body.no-scroll {
     z-index: 2;
 }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-    .header {
-        aspect-ratio: 3/1; /* Légèrement plus compact pour les tablettes */
-    }
-}
 
-@media (max-width: 768px) {
-    .header {
-        aspect-ratio: 2.5/1; /* Encore plus compact pour les petites tablettes */
-    }
-
-    .header h1 {
-        font-size: var(--text-2xl);
-        padding: 0 var(--spacing-m);
-    }
-
-    .header-subtitle {
-        font-size: var(--text-lg);
-        padding: 0 var(--spacing-m);
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        aspect-ratio: 2/1; /* Plus compact pour mobile */
-        min-height: 200px; /* Hauteur minimum pour assurer la lisibilité */
-    }
-
-    .header h1 {
-        padding: 0 var(--spacing-s);
-    }
-
-    .header-subtitle {
-        padding: 0 var(--spacing-s);
-    }
-}
 
 
 /* Section styles */
