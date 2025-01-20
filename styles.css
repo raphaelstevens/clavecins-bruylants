@@ -288,6 +288,7 @@ body.no-scroll {
 
 .header h1 {
     position: relative;
+    margin-top: 3rem;
     font-family: var(--font-serif);
     font-size: var(--text-3xl);
     text-align: center;
@@ -298,14 +299,7 @@ body.no-scroll {
     z-index: 2;
 }
 
-.header h1::after {
-    content: "";
-    display: block;
-    width: min(120px, 20%);
-    height: 2px;
-    background-color: var(--color-accent);
-    margin: var(--spacing-m) auto 0;
-}
+
 
 .header-subtitle {
     position: relative;
