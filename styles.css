@@ -125,8 +125,14 @@ h2::after {
     display: block;
     width: 80px;
     height: 2px;
-    background-color: var(--color-accent);
     margin: var(--spacing-s) auto 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-accent) 20%,
+        var(--color-accent) 80%,
+        transparent
+    );
 }
 
 /* Navigation Menu */
@@ -369,6 +375,7 @@ body.no-scroll {
     font-size: var(--text-base);
     line-height: 1.8;
     color: var(--color-primary);
+    text-align: justify;
 }
 
 .biography-text p:not(:last-child) {
@@ -506,11 +513,35 @@ body.no-scroll {
     margin: 0 auto var(--spacing-xl);
 }
 
+.maker-info h3 {
+    position: relative;
+    color: var(--color-highlight);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    margin-bottom: var(--spacing-m);
+    padding-bottom: var(--spacing-s);
+}
+
+.maker-info h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        var(--color-accent) 0%,
+        transparent 100%
+    );
+}
+
 .maker-info p {
     text-align: justify;
     font-size: var(--text-base);
     line-height: 1.8;
     color: var(--color-primary);
+    margin-bottom: var(--spacing-s);
 }
 
 .maker-info p:last-child {
