@@ -28,23 +28,32 @@ scrollTopBtn.addEventListener('mouseout', () => {
 });
 
 
-
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+// Animation des sections au scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                // Ajoute un délai progressif pour les sections suivantes
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 75); // 75ms de délai entre chaque section
+                
+                // Arrête d'observer une fois l'animation déclenchée
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.15, // Un peu plus haut pour une meilleure anticipation
+        rootMargin: '50px' // Déclenche l'animation un peu avant que l'élément soit visible
     });
 
+    // Observe toutes les sections qui doivent être animées
     document.querySelectorAll('.harpsichord-card').forEach(card => {
+        // S'assure que les cartes sont initialement masquées
+        card.classList.add('initially-hidden');
         observer.observe(card);
     });
-
-
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');

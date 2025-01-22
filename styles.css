@@ -543,15 +543,29 @@ body.no-scroll {
 
 /* Harpsichord Card Styles */
 .harpsichord-card {
+    opacity: 1; /* Par défaut visible pour les navigateurs sans JS */
+    transform: translateY(0);
+    transition: none;
+}
+
+.harpsichord-card.initially-hidden {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .harpsichord-card.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Assure une animation fluide */
+@media (prefers-reduced-motion: no-preference) {
+    .harpsichord-card.initially-hidden {
+        will-change: opacity, transform;
+    }
+}
+
 
 /* Maker Info Styles */
 .maker-info {
