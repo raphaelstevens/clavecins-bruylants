@@ -364,32 +364,77 @@ body.no-scroll {
 }
 
 /* Biography styles - Mise à jour avec les nouvelles variables de taille */
+/* Styles de la section biographie uniquement */
 .biography-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "text"
+        "photo"
+        "full";
     gap: var(--spacing-xl);
-    align-items: start;
 }
 
 .biography-text {
-    font-size: var(--text-base);
-    line-height: 1.8;
-    color: var(--color-primary);
-    text-align: justify;
+    grid-area: text;
 }
 
-.biography-text p:not(:last-child) {
-    margin-bottom: var(--spacing-m);
+.biography-full {
+    grid-area: full;
 }
 
 .biography-image {
+    grid-area: photo;
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     box-shadow: var(--shadow-medium);
     border-radius: var(--radius-m);
     transform: rotate(-2deg);
     transition: transform var(--transition-speed) var(--transition-timing);
 }
 
+/* Style pour écrans larges */
+@media (min-width: 1024px) {
+    .biography-content {
+        display: block; /* Changé pour un affichage standard */
+        position: relative; /* Pour le positionnement des éléments enfants */
+    }
+
+    .biography-text {
+        width: 66%; /* 2/3 de la largeur */
+        padding-right: var(--spacing-xl);
+    }
+
+    .biography-image {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 30%; /* ~1/3 de la largeur */
+        max-width: none;
+    }
+
+    .biography-full {
+        clear: both; /* Force le contenu à passer sous l'image */
+        margin-top: var(--spacing-l);
+    }
+}
+
+/* Styles communs pour le texte */
+.biography-text,
+.biography-full {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-primary);
+    text-align: justify;
+}
+
+.biography-text p:not(:last-child),
+.biography-full p:not(:last-child) {
+    margin-bottom: var(--spacing-m);
+}
+
+/* Effets de survol */
 .biography-image:hover {
     transform: rotate(0);
 }
