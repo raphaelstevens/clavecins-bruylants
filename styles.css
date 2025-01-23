@@ -517,7 +517,7 @@ body.no-scroll {
 
 .specs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-l);
 }
 
@@ -626,10 +626,9 @@ body.no-scroll {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    opacity: 0;
+    display: none;
     transition: all var(--transition-speed) var(--transition-timing);
     box-shadow: var(--shadow-medium);
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -637,9 +636,10 @@ body.no-scroll {
 }
 
 #scrollTopBtn.visible {
-    opacity: 1;
+    display: flex;
 }
 
+/* Gérer le hover en CSS plutôt qu'en JS */
 #scrollTopBtn:hover {
     background-color: var(--color-primary);
     transform: translateY(-2px);
@@ -649,7 +649,6 @@ body.no-scroll {
 #scrollTopBtn:active {
     transform: translateY(0);
 }
-
 
 @media (min-width: 1024px) {
     .biography-content {
@@ -683,3 +682,10 @@ body.no-scroll {
         right: -100%;
     }
 }
+
+@media (max-width: 640px) {
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,56 +1,72 @@
-
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 
 // Afficher/masquer le bouton en fonction du scroll
-window.addEventListener('scroll', () => {
+function updateScrollButtonVisibility() {
     if (window.scrollY > 300) {
-        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.classList.add('visible');
     } else {
-        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.classList.remove('visible');
     }
-});
+}
 
-// Remonter en haut au clic
+// Initialiser l'état du bouton
+updateScrollButtonVisibility();
+
+// Écouter le scroll
+window.addEventListener('scroll', updateScrollButtonVisibility);
+
+// Fonction pour trouver la section précédente
+function findPreviousSection() {
+    const sections = Array.from(document.querySelectorAll('section'));
+    const currentScroll = window.scrollY + 100; // Un peu de marge pour la détection
+
+    // Trouver la section actuelle
+    for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const sectionTop = section.offsetTop;
+        
+        if (currentScroll > sectionTop) {
+            // Si on trouve la section actuelle, retourner la section précédente
+            if (i > 0) {
+                return sections[i - 1];
+            } else {
+                // Si c'est la première section, retourner tout en haut
+                return null;
+            }
+        }
+    }
+    return null;
+}
+
+// Remonter à la section précédente au clic
 scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Hover effect
-scrollTopBtn.addEventListener('mouseover', () => {
-    scrollTopBtn.style.backgroundColor = 'var(--color-wood)';
-});
-
-scrollTopBtn.addEventListener('mouseout', () => {
-    scrollTopBtn.style.backgroundColor = 'var(--color-burgundy)';
+    const previousSection = findPreviousSection();
+    
+    if (previousSection) {
+        previousSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        // Si pas de section précédente, remonter tout en haut
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 });
 
 
 // Animation des sections au scroll
 document.addEventListener('DOMContentLoaded', () => {
-    // Log au début
-    console.log('Script démarré');
-    
     const observer = new IntersectionObserver((entries, observer) => {
-        console.log('Nombre d\'entrées observées:', entries.length);
-        
         entries.forEach((entry, index) => {
-            console.log('Section observée:', entry.target.id);
-            console.log('Est visible:', entry.isIntersecting);
-            console.log('Ratio de visibilité:', entry.intersectionRatio);
-            
             if (entry.isIntersecting) {
-                console.log('Animation déclenchée pour:', entry.target.id);
-                
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                    console.log('Classe visible ajoutée à:', entry.target.id);
                 }, index * 75);
                 
                 observer.unobserve(entry.target);
-                console.log('Observation arrêtée pour:', entry.target.id);
             }
         });
     }, {
@@ -58,23 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '400px'
     });
 
-    // Log des sections trouvées
     const cards = document.querySelectorAll('.harpsichord-card');
-    console.log('Nombre de cartes trouvées:', cards.length);
     
-    cards.forEach((card, index) => {
-        console.log('Carte trouvée:', card.id);
-        console.log('Classes initiales:', card.className);
-        
+    cards.forEach((card) => {
         card.classList.add('initially-hidden');
-        console.log('Classe initially-hidden ajoutée à:', card.id);
-        
         observer.observe(card);
-        console.log('Observation démarrée pour:', card.id);
     });
 });
-
-
 
 // Menu
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,4 +127,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
