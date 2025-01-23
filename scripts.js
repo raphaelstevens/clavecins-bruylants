@@ -30,31 +30,53 @@ scrollTopBtn.addEventListener('mouseout', () => {
 
 // Animation des sections au scroll
 document.addEventListener('DOMContentLoaded', () => {
+    // Log au début
+    console.log('Script démarré');
+    
     const observer = new IntersectionObserver((entries, observer) => {
+        console.log('Nombre d\'entrées observées:', entries.length);
+        
         entries.forEach((entry, index) => {
+            console.log('Section observée:', entry.target.id);
+            console.log('Est visible:', entry.isIntersecting);
+            console.log('Ratio de visibilité:', entry.intersectionRatio);
+            
             if (entry.isIntersecting) {
-                // Ajoute un délai progressif pour les sections suivantes
+                console.log('Animation déclenchée pour:', entry.target.id);
+                
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, index * 75); // 75ms de délai entre chaque section
+                    console.log('Classe visible ajoutée à:', entry.target.id);
+                }, index * 75);
                 
-                // Arrête d'observer une fois l'animation déclenchée
                 observer.unobserve(entry.target);
+                console.log('Observation arrêtée pour:', entry.target.id);
             }
         });
     }, {
-        threshold: 0.15, // Un peu plus haut pour une meilleure anticipation
-        rootMargin: '50px' // Déclenche l'animation un peu avant que l'élément soit visible
+        threshold: 0.12,
+        rootMargin: '400px'
     });
 
-    // Observe toutes les sections qui doivent être animées
-    document.querySelectorAll('.harpsichord-card').forEach(card => {
-        // S'assure que les cartes sont initialement masquées
+    // Log des sections trouvées
+    const cards = document.querySelectorAll('.harpsichord-card');
+    console.log('Nombre de cartes trouvées:', cards.length);
+    
+    cards.forEach((card, index) => {
+        console.log('Carte trouvée:', card.id);
+        console.log('Classes initiales:', card.className);
+        
         card.classList.add('initially-hidden');
+        console.log('Classe initially-hidden ajoutée à:', card.id);
+        
         observer.observe(card);
+        console.log('Observation démarrée pour:', card.id);
     });
 });
 
+
+
+// Menu
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
