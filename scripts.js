@@ -1,11 +1,12 @@
+// Scroll Top Button
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 
 // Afficher/masquer le bouton en fonction du scroll
 function updateScrollButtonVisibility() {
     if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
+        scrollTopBtn?.classList.add('visible');
     } else {
-        scrollTopBtn.classList.remove('visible');
+        scrollTopBtn?.classList.remove('visible');
     }
 }
 
@@ -56,9 +57,9 @@ scrollTopBtn.addEventListener('click', () => {
     }
 });
 
-
-// Animation des sections au scroll
+// Menu et Theme
 document.addEventListener('DOMContentLoaded', () => {
+    // Animation des sections au scroll
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -75,33 +76,82 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const cards = document.querySelectorAll('.harpsichord-card');
-    
     cards.forEach((card) => {
         card.classList.add('initially-hidden');
         observer.observe(card);
     });
-});
 
-// Menu
-document.addEventListener('DOMContentLoaded', () => {
+    // Menu Elements
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navOverlay = document.querySelector('.nav-overlay');
     const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Theme Elements
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeSwitch = document.querySelector('.theme-switch');
+    const root = document.documentElement;
+    
+    // Theme Constants
+    const DARK_THEME = 'dark';
+    const LIGHT_THEME = 'light';
+    
+    // Détection des préférences système
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Fonction pour mettre à jour le thème
+    function updateTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        if (themeToggle) {
+            themeToggle.checked = theme === DARK_THEME;
+        }
+        localStorage.setItem('theme', theme);
+    }
 
-    // Toggle menu
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+    // Initialisation du thème
+    const savedTheme = localStorage.getItem('theme');
+    const preferredTheme = savedTheme || (systemDarkMode.matches ? DARK_THEME : LIGHT_THEME);
+    updateTheme(preferredTheme);
+
+    // Écoute les changements de préférences système
+    systemDarkMode.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches ? DARK_THEME : LIGHT_THEME);
+        }
     });
 
-    // Close menu when clicking overlay
-    navOverlay.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-    });
+    // Gestion du switch de thème
+    if (themeSwitch) {
+        // Empêche la fermeture du menu au clic sur le switch
+        ['mousedown', 'click', 'mouseup'].forEach(eventType => {
+            themeSwitch.addEventListener(eventType, (e) => {
+                e.stopPropagation();
+            });
+        });
+    }
 
-    // Handle link clicks
+    if (themeToggle) {
+        themeToggle.addEventListener('change', (e) => {
+            e.stopPropagation();
+            updateTheme(e.target.checked ? DARK_THEME : LIGHT_THEME);
+        });
+    }
+
+    // Gestion du menu
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -111,15 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (section) {
                 navMenu.classList.remove('active');
                 document.body.classList.remove('no-scroll');
-                
-                section.scrollIntoView({ 
-                    behavior: 'smooth'
-                });
+                section.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Hide menu on resize if open
+    // Resize Handler
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');

@@ -22,6 +22,9 @@
     --color-highlight: #722F37;  
     --color-text: #2C1810;
     --color-white: #FFFFFF;
+    --color-button-stroke: #F5F2E9;
+    --color-button-stroke-hoover: #F5F2E9;
+    
     
     /* Typographie */
     --font-serif: 'Crimson Text', Georgia, serif;
@@ -56,7 +59,62 @@
     /* Animation */
     --transition-speed: 0.3s;
     --transition-timing: ease;
+    
 }
+
+:root[data-theme="dark"] {
+    /* 1. D'abord les variables de couleur */
+    --color-primary: #E8DFD8;      
+    --color-secondary: #C7B7A3;    
+    --color-accent: #A67F5D;       
+    --color-bg-primary: #211E1C;    
+    --color-bg-secondary: #1A1715;
+    --color-highlight: #E5707A;    
+    --color-text: #F5F0EB;             
+    --color-white: #E8DFD8;
+    --color-button-stroke: #F5F0EB;
+    --color-button-stroke-hoover: #1A1715;       
+
+    /* 2. Les variables d'ombre */
+    --shadow-color: 255, 255, 255;
+    --shadow-subtle: 0 2px 4px rgba(var(--shadow-color), 0.03);
+    --shadow-medium: 0 4px 12px rgba(var(--shadow-color), 0.05);
+    --shadow-strong: 0 8px 24px rgba(var(--shadow-color), 0.08);
+}
+
+/* 3. Transitions globales */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 4. Les sélecteurs spécifiques pour le mode sombre */
+html[data-theme="dark"] {
+    /* Ajustements spécifiques pour le mode sombre */
+    .header-subtitle {
+        color: var(--color-highlight);
+        opacity: 0.95;
+    }
+
+
+
+
+
+    /* Amélioration de la lisibilité des liens */
+    a {
+        color: #D1C4B8;
+    }
+
+    a:hover {
+        color: #D99198;
+    }
+
+    /* Ajustement des images pour le mode sombre */
+    img {
+        filter: brightness(0.9);
+    }
+}
+
+
 
 /* Reset et styles de base */
 * {
@@ -70,7 +128,7 @@ html {
 }
 
 body {
-    background-color: var(--color-bg-primary);
+    background-color: var(--color-bg-secondary);
     color: var(--color-text);
     font-family: var(--font-serif);
     font-size: var(--text-base);
@@ -135,125 +193,7 @@ h2::after {
     );
 }
 
-/* Navigation Menu */
-.nav-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-}
 
-/* Hamburger Button */
-.hamburger {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    background: var(--color-highlight);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 12px;
-    z-index: 1002;
-    transition: background-color var(--transition-speed) var(--transition-timing);
-}
-
-.hamburger:hover {
-    background: var(--color-secondary);
-}
-
-.hamburger-line {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--color-white);
-    margin: 4px 0;
-    transition: 0.3s;
-}
-
-/* Hamburger Animation */
-.nav-menu.active .hamburger-line:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.nav-menu.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-menu.active .hamburger-line:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Navigation Links */
-.nav-links {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100vh;
-    background: var(--color-bg-secondary);
-    padding: 80px 20px 20px;
-    list-style: none;
-    transition: 0.3s;
-    z-index: 1001;
-    box-shadow: var(--shadow-strong);
-}
-
-.nav-menu.active .nav-links {
-    right: 0;
-}
-
-.nav-links li {
-    margin-bottom: 20px;
-}
-
-.nav-links a {
-    display: block;
-    color: var(--color-highlight);
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 600;
-    padding: 10px;
-    transition: all var(--transition-speed) var(--transition-timing);
-    border-radius: var(--radius-s);
-}
-
-.nav-links a:hover {
-    background: var(--color-highlight);
-    color: var(--color-white);
-    transform: translateX(10px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Overlay */
-.nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    z-index: 1000;
-}
-
-.nav-menu.active .nav-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Prevent body scroll when menu is open */
-body.no-scroll {
-    overflow: hidden;
-}
-
-/* Prevent body scroll when menu is open */
-body.no-scroll {
-    overflow: hidden;
-}
 
 /* Header styles - Mise à jour avec les nouvelles variables de taille */
 .header {
@@ -265,7 +205,7 @@ body.no-scroll {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-bg-primary);
+    background-color: var(--color-bg-secondary);
     margin-bottom: var(--spacing-xxl);
     overflow: visible; /* Permet au contenu de déborder si nécessaire */
 }
@@ -620,7 +560,7 @@ body.no-scroll {
     bottom: 20px;
     right: 20px;
     background-color: var(--color-highlight);
-    color: var(--color-accent);
+    color: var(--color-button-stroke);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -642,6 +582,7 @@ body.no-scroll {
 /* Gérer le hover en CSS plutôt qu'en JS */
 #scrollTopBtn:hover {
     background-color: var(--color-primary);
+    color: var(--color-button-stroke-hoover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-strong);
 }
@@ -665,7 +606,7 @@ body.no-scroll {
         position: absolute;
         right: 0;
         top: 0;
-        width: 30%;  /* L'image prend ~1/3 de la largeur */
+        width: 33%;  /* L'image prend ~1/3 de la largeur */
         max-width: none;
     }
 
@@ -689,3 +630,220 @@ body.no-scroll {
     }
 }
 
+
+/* --------------------------------
+   1. Navigation Menu Base
+-------------------------------- */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Prevent body scroll when menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* --------------------------------
+   2. Hamburger Button
+-------------------------------- */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--color-highlight);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 12px;
+    z-index: 1002;
+    transition: background-color var(--transition-speed) var(--transition-timing);
+}
+
+.hamburger:hover {
+    background: var(--color-secondary);
+}
+
+.hamburger-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--color-white);
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Hamburger Animation */
+.nav-menu.active .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.nav-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-menu.active .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --------------------------------
+   3. Navigation Panel
+-------------------------------- */
+.nav-panel {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: var(--color-bg-secondary);
+    transition: 0.3s;
+    z-index: 1001;
+    box-shadow: var(--shadow-strong);
+}
+
+.nav-menu.active .nav-panel {
+    right: 0;
+}
+
+/* Panel Header avec Switch */
+.nav-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligne le switch à gauche */
+    margin-top: 15px;
+    padding: 20px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1002; /* S'assure que le header est au-dessus des autres éléments */
+    pointer-events: all; /* Permet l'interaction avec le switch */
+}
+
+/* --------------------------------
+   4. Navigation Links
+-------------------------------- */
+.nav-links {
+    list-style: none;
+    padding: 84px 20px 20px; /* Ajusté pour correspondre au header */
+    margin: 0;
+}
+
+.nav-links li {
+    margin-bottom: 20px;
+}
+
+.nav-links a {
+    display: block;
+    color: var(--color-highlight);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    padding: 10px;
+    transition: all var(--transition-speed) var(--transition-timing);
+    border-radius: var(--radius-s);
+}
+
+.nav-links a:hover {
+    background: var(--color-highlight);
+    color: var(--color-white);
+    transform: translateX(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------
+   5. Overlay
+-------------------------------- */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.nav-menu.active .nav-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --------------------------------
+   6. Theme Switch
+-------------------------------- */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    margin-right: 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.nav-menu.active .theme-switch {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-secondary);
+    transition: .4s;
+    border-radius: 24px;
+    border: 1px solid var(--color-highlight);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 4px;
+}
+
+.slider .sun,
+.slider .moon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-highlight);
+    fill: var(--color-highlight);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--color-highlight);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+input:checked + .slider {
+    background-color: var(--color-bg-secondary);
+}
