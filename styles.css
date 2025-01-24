@@ -24,6 +24,7 @@
     --color-white: #FFFFFF;
     --color-button-stroke: #F5F2E9;
     --color-button-stroke-hoover: #F5F2E9;
+    --color-nav-link-text-hoover: #F5F2E9; 
     
     
     /* Typographie */
@@ -73,7 +74,8 @@
     --color-text: #F5F0EB;             
     --color-white: #E8DFD8;
     --color-button-stroke: #F5F0EB;
-    --color-button-stroke-hoover: #1A1715;       
+    --color-button-stroke-hoover: #1A1715;
+    --color-nav-link-text-hoover: #1A1715;       
 
     /* 2. Les variables d'ombre */
     --shadow-color: 255, 255, 255;
@@ -560,7 +562,7 @@ h2::after {
     bottom: 20px;
     right: 20px;
     background-color: var(--color-highlight);
-    color: var(--color-button-stroke);
+    color: var(--color-bg-primary);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -581,8 +583,7 @@ h2::after {
 
 /* Gérer le hover en CSS plutôt qu'en JS */
 #scrollTopBtn:hover {
-    background-color: var(--color-primary);
-    color: var(--color-button-stroke-hoover);
+    background-color: var(--color-secondary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-strong);
 }
@@ -672,7 +673,7 @@ body.no-scroll {
     display: block;
     width: 20px;
     height: 2px;
-    background: var(--color-white);
+    background: var(--color-bg-primary);
     margin: 4px 0;
     transition: 0.3s;
 }
@@ -714,7 +715,7 @@ body.no-scroll {
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Aligne le switch à gauche */
-    margin-top: 15px;
+    margin-top: 11px;
     padding: 20px;
     width: calc(100% - 40px);
     box-sizing: border-box;
@@ -751,7 +752,7 @@ body.no-scroll {
 
 .nav-links a:hover {
     background: var(--color-highlight);
-    color: var(--color-white);
+    color: var(--color-nav-link-text-hoover) !important;
     transform: translateX(10px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
