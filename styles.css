@@ -350,9 +350,14 @@ h2::after {
     margin-bottom: var(--spacing-xl);
 }
 
+.photo-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-m);
+}
+
 .photo-main {
-    width: 100%;
-    height: auto;
+    aspect-ratio: 1;
     border-radius: var(--radius-m);
     margin-bottom: var(--spacing-m);
     box-shadow: var(--shadow-medium);
@@ -371,7 +376,7 @@ h2::after {
 }
 
 .photo-detail-container {
-    aspect-ratio: 4/3;
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: var(--radius-m);
     box-shadow: var(--shadow-subtle);
